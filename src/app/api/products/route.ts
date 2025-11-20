@@ -46,7 +46,7 @@ export async function GET() {
 //
 export async function POST(req: Request) {
   try {
-    const token = getAccessToken();
+    const token = await getAccessToken();
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }

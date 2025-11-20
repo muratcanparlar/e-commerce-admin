@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
         port: "3000", // optional: specify port if needed
         pathname: "/products/**", // match all images under /products
       },
+      {
+        protocol: "https", // localhost usually runs on http
+        hostname: "res.cloudinary.com", // allow images from localhost
+      },
     ],
   },
 };
