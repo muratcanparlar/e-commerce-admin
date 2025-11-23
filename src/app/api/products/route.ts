@@ -62,9 +62,9 @@ export async function POST(req: Request) {
       body: JSON.stringify(body),
     });
 
-    const data = await res.json();
+    //const data = await res.json();
 
-    return NextResponse.json(data, { status: res.status });
+    return NextResponse.json({ status: res.status });
   } catch (err) {
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }

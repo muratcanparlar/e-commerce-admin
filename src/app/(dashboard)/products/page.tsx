@@ -115,11 +115,7 @@ import https from "https";
 // };
 
 const getProducts = async (): Promise<Product[]> => {
-  
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-  const agent = new https.Agent({
-    rejectUnauthorized: false, // only for dev
-  });
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_PRODUCT_API_URL}/products`,

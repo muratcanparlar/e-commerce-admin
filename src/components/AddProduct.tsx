@@ -32,6 +32,7 @@ import { Checkbox } from "./ui/checkbox";
 import { ScrollArea } from "./ui/scroll-area";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const categories = [
   "T-shirts",
@@ -159,6 +160,7 @@ const AddProduct = () => {
     queryKey: ["categories"],
     queryFn: fetchCategories,
   });
+  const router = useRouter();
 
   const mutation = useMutation({
     mutationFn: async (data: z.infer<typeof ProductFormSchema>) => {
@@ -176,6 +178,8 @@ const AddProduct = () => {
     },
     onSuccess: () => {
       toast.success("Product created successfully");
+      form.reset();
+      router.push("/products"); // ✅ navigate to list page
     },
     onError: (error) => {
       toast.error(error.message);
